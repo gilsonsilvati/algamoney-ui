@@ -1,11 +1,24 @@
-<p-tabView>
-    <p-tabPanel header="Header 1">
-       Content 1
-    </p-tabPanel>
-    <p-tabPanel header="Header 2">
-        Content 2
-    </p-tabPanel>
-    <p-tabPanel header="Header 3">
-        Content 3
-    </p-tabPanel>
-</p-tabView>
+<div class="container">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12">
+            <h1>Lançamentos</h1>
+        </div>
+
+        <div class="p-field p-col-12">
+            <label>Descrição</label>
+            <input type="text" pInputText>
+        </div>
+
+        <div class="p-field p-col-12">
+            <label class="p-d-block">Vencimento</label>
+            <input type="text" pInputText style="width: 100px; margin-right: 10px">
+
+            <label>até</label>
+            <input type="text" pInputText style="width: 100px; margin-left: 10px">
+        </div>
+
+        <div class="p-field p-col-2">
+            <p-button label="Pesquisar" icon="pi pi-search" iconPos="left"></p-button>
+        </div>
+    </div>
+</div>
