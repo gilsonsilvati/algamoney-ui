@@ -25,7 +25,7 @@
 
     <div class="p-grid" *ngIf="lancamentos.length">
         <div class="p-col-12">
-            <p-table [value]="lancamentos" styleClass="p-datatable-sm p-datatable-striped">
+            <p-table [value]="lancamentos" styleClass="p-datatable-sm p-datatable-striped" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Pessoa</th>
