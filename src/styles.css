@@ -9,6 +9,18 @@ label {
     font-weight: bold;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
+}
+
+a.p-button:hover, a.p-button:focus {
+    text-decoration: none;
+}
+
 .col-acoes .p-button {
     margin: 1px;
 }
