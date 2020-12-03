@@ -21,6 +21,10 @@ a.p-button:hover, a.p-button:focus {
     text-decoration: none;
 }
 
+.p-button {
+    margin-right: .25em;
+}
+
 .col-acoes .p-button {
     margin: 1px;
 }
