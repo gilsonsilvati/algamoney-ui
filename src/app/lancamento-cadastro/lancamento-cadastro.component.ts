@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
 })
 export class LancamentoCadastroComponent {
 
+    tipos = [
+        { label: 'Receita', value: 'RECEITA' },
+        { label: 'Despesa', value: 'DESPESA' }
+    ];
+
 }

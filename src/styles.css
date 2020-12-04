@@ -21,13 +21,13 @@ a.p-button:hover, a.p-button:focus {
     text-decoration: none;
 }
 
-.p-button {
+.p-button + .p-button {
     margin-right: .25em;
 }
 
-.col-acoes .p-button {
+/* .col-acoes .p-button {
     margin: 1px;
-}
+} */
 
 @media (min-width: 1200px) {
     .container {
