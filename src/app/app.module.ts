@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
 
 
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
         ButtonModule,
         TableModule,
         TooltipModule,
-        InputTextareaModule
+        InputTextareaModule,
+        CalendarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
