@@ -8,12 +8,12 @@
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>Vencimento</label>
-                <input pInputText type="text">
+                <p-calendar dateFormat="dd/mm/yy"></p-calendar>
             </div>
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>Recebimento</label>
-                <input pInputText type="text">
+                <p-calendar dateFormat="dd/mm/yy"></p-calendar>
             </div>
 
             <div class="p-col-12 p-md-9 p-fluid">
@@ -44,7 +44,7 @@
             <div class="p-col-12">
                 <button pButton label="Salvar" disabled="true"></button>
                 <button pButton label="Novo" class="p-button-info"></button>
-                <a href="javascript:;">Voltar para pesquisa</a>
+                <a pButton label="Voltar para pesquisa" href="javascript:;" class="p-button-link"></a>
             </div>
         </div>
     </form>
