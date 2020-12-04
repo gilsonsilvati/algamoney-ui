@@ -32,12 +32,12 @@
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Categoria</label>
-                <input pInputText type="text">
+                <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
             </div>
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <input pInputText type="text">
+                <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione"></p-dropdown>
             </div>
 
             <div class="p-col-12 p-fluid">
@@ -46,8 +46,8 @@
             </div>
 
             <div class="p-col-12">
-                <button pButton label="Salvar" disabled="true"></button>
-                <button pButton label="Novo" class="p-button-info"></button>
+                <button pButton type="submit" label="Salvar" disabled="true"></button>
+                <button pButton pRipple type="button" label="Novo" class="p-button-info"></button>
                 <a pButton label="Voltar para pesquisa" href="javascript:;" class="p-button-link"></a>
             </div>
         </div>
