@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form>
+    <form autocomplete="off">
         <div class="p-grid">
             <div class="p-col-12">
                 <h1>Novo Lançamento</h1>
@@ -22,7 +22,14 @@
 
             <div class="p-col-12 p-md-9 p-fluid">
                 <label>Descrição</label>
-                <input pInputText type="text">
+                <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="5">
+
+                <div class="p-message p-message-error" *ngIf="descricao.dirty && descricao.hasError('required')">
+                    Informe uma descrição
+                </div>
+                <div class="p-message p-message-error" *ngIf="descricao.dirty && descricao.hasError('minlength')">
+                    Mínimo de {{ descricao.errors.minlength.requiredLength }} caracteres
+                </div>
             </div>
 
             <div class="p-col-12 p-md-3 p-fluid">
