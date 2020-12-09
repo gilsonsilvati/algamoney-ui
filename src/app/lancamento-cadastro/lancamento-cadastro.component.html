@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form autocomplete="off">
+    <form #f="ngForm" autocomplete="off">
         <div class="p-grid">
             <div class="p-col-12">
                 <h1>Novo Lançamento</h1>
@@ -12,7 +12,9 @@
 
             <div class="p-col-6 p-md-3 p-fluid">
                 <label>Vencimento</label>
-                <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
+
+                <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
             </div>
 
             <div class="p-col-6 p-md-3 p-fluid">
@@ -30,17 +32,23 @@
 
             <div class="p-col-12 p-md-3 p-fluid">
                 <label>Valor</label>
-                <p-inputNumber mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2" placeholder="0,00"></p-inputNumber>
+                <p-inputNumber mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2" placeholder="0,00" name="valor" ngModel #valor="ngModel" required></p-inputNumber>
+
+                <app-message [control]="valor" error="required" text="Informe um valor"></app-message>
             </div>
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Categoria</label>
-                <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+                <p-dropdown [options]="categorias" placeholder="Selecione" name="categoria" ngModel #categoria="ngModel" required></p-dropdown>
+
+                <app-message [control]="categoria" error="required" text="Informe uma categoria"></app-message>
             </div>
 
             <div class="p-col-12 p-md-6 p-fluid">
                 <label>Pessoa</label>
-                <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione"></p-dropdown>
+                <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione"  name="pessoa" ngModel #pessoa="ngModel" required></p-dropdown>
+
+                <app-message [control]="pessoa" error="required" text="Informe uma pessoa"></app-message>
             </div>
 
             <div class="p-col-12 p-fluid">
@@ -49,7 +57,7 @@
             </div>
 
             <div class="p-col-12">
-                <button pButton type="submit" label="Salvar" disabled="true"></button>
+                <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
                 <button pButton pRipple type="button" label="Novo" class="p-button-info"></button>
 
                 <a pButton label="Voltar para pesquisa" href="javascript:;" class="p-button-link"></a>
