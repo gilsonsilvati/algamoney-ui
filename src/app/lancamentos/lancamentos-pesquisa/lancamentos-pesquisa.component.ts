@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 import { LancamentoService } from '../lancamento.service';
 import { LancamentoFiltro } from './lancamento-filtro.model';
@@ -15,6 +16,8 @@ export class LancamentosPesquisaComponent {
     lancamentos: any[] = [];
     totalRegistros = 0;
     loading: boolean;
+
+    @ViewChild('tabela') grid: Table;
 
     constructor(private lancamentoService: LancamentoService) { }
 
@@ -36,6 +39,11 @@ export class LancamentosPesquisaComponent {
             this.pesquisar(pagina);
             this.loading = false;
         }, 1000);
+    }
+
+    excluir(codigo: number): void {
+        this.lancamentoService.excluir(codigo)
+            .then(() => this.grid.reset());
     }
 
 }
