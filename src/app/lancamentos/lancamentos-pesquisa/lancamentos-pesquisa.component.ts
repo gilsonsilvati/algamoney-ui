@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 
 import { LancamentoService } from '../lancamento.service';
-import { LancamentoFiltro } from './LancamentoFiltro';
+import { LancamentoFiltro } from './lancamento-filtro.model';
 
 @Component({
     selector: 'app-lancamentos-pesquisa',

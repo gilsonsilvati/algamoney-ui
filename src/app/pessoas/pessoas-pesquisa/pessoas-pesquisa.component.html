@@ -1,23 +1,26 @@
 <div class="container">
 
+    <form (ngSubmit)="pesquisar()" autocomplete="off">
+        <div class="p-grid">
+            <div class="p-col-12">
+                <h1>Pessoas</h1>
+            </div>
+
+            <div class="p-col-12 p-fluid">
+                <label>Nome</label>
+                <input type="text" pInputText name="nome" [(ngModel)]="filtro.nome">
+            </div>
+
+            <div class="p-col-12">
+                <p-button type="submit" label="Pesquisar" icon="pi pi-search" iconPos="left"></p-button>
+            </div>
+        </div>
+    </form>
+
     <div class="p-grid">
         <div class="p-col-12">
-            <h1>Pessoas</h1>
-        </div>
-
-        <div class="p-col-12 p-fluid">
-            <label>Nome</label>
-            <input type="text" pInputText>
-        </div>
-
-        <div class="p-col-12">
-            <p-button label="Pesquisar" icon="pi pi-search" iconPos="left"></p-button>
-        </div>
-    </div>
-
-    <div class="p-grid">
-        <div class="p-col-12">
-            <p-table [value]="pessoas" styleClass="p-datatable-sm p-datatable-striped" [paginator]="true" [rows]="5" [responsive]="true">
+            <p-table [value]="pessoas" styleClass="p-datatable-sm p-datatable-striped" [responsive]="true" [loading]="loading"
+                    [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Nome</th>

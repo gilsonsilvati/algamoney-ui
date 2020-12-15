@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { LancamentoFiltro } from './lancamentos-pesquisa/LancamentoFiltro';
+import { LancamentoFiltro } from './lancamentos-pesquisa/lancamento-filtro.model';
 import * as moment from 'moment';
 
 @Injectable({
