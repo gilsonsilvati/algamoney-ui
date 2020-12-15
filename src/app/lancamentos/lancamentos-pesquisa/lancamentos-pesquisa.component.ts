@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/api';
+import { LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
 import { LancamentoService } from '../lancamento.service';
@@ -19,7 +19,10 @@ export class LancamentosPesquisaComponent {
 
     @ViewChild('tabela') grid: Table;
 
-    constructor(private lancamentoService: LancamentoService) { }
+    constructor(
+        private lancamentoService: LancamentoService,
+        private messageService: MessageService
+    ) { }
 
     pesquisar(pagina: number = 0): void {
         this.filtro.pagina = pagina;
@@ -43,7 +46,15 @@ export class LancamentosPesquisaComponent {
 
     excluir(codigo: number): void {
         this.lancamentoService.excluir(codigo)
-            .then(() => this.grid.reset());
+            .then(() => {
+                if (this.grid.first === 0) {
+                    this.pesquisar();
+                } else {
+                    this.grid.reset();
+                }
+
+                this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' });
+            });
     }
 
 }
