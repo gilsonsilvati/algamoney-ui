@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent, MessageService } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
 import { LancamentoService } from '../lancamento.service';
@@ -21,7 +21,8 @@ export class LancamentosPesquisaComponent {
 
     constructor(
         private lancamentoService: LancamentoService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private confirmation: ConfirmationService
     ) { }
 
     pesquisar(pagina: number = 0): void {
@@ -42,6 +43,15 @@ export class LancamentosPesquisaComponent {
             this.pesquisar(pagina);
             this.loading = false;
         }, 1000);
+    }
+
+    confirmarExclusao(codigo: number): void {
+        this.confirmation.confirm({
+            message: 'Tem certeza que deseja excluir?',
+            accept: () => {
+                this.excluir(codigo);
+            }
+        });
     }
 
     excluir(codigo: number): void {
