@@ -69,6 +69,19 @@ export class PessoasPesquisaComponent {
         }, 1000);
     }
 
+    alternarStatus(pessoa: any): void {
+        const novoStatus = !pessoa.ativo;
+
+        this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
+            .then(() => {
+                const acao = novoStatus ? 'ativada' : 'desativada';
+
+                pessoa.ativo = novoStatus;
+                this.messageService.add({ severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
+            })
+            .catch(erro => this.errorHandlerService.handle(erro));
+    }
+
     confirmarExclusao(codigo: number): void {
         this.confirmation.confirm({
             message: 'Tem certeza que deseja excluir?',

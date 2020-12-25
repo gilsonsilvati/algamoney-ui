@@ -48,7 +48,7 @@
                         </td>
                         <td>
                             <span class="p-column-title">Status</span>
-                            <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top">
+                            <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top" (click)="alternarStatus(pessoa)">
                                 <span class="p-tag" [ngClass]="pessoa.ativo ? 'p-tag-success' : 'p-tag-danger'">{{ pessoa.ativo ? 'Ativo' : 'Inativo' }}</span>
                             </a>
                         </td>
