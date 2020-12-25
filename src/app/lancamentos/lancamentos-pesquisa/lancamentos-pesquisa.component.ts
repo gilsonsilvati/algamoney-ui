@@ -57,7 +57,7 @@ export class LancamentosPesquisaComponent {
         });
     }
 
-    excluir(codigo: number): void {
+    private excluir(codigo: number): void {
         this.lancamentoService.excluir(codigo)
             .then(() => {
                 if (this.grid.first === 0) {

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 import { PessoaFiltro } from './pessoa-filtro.model';
 import { PessoaService } from './../pessoa.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
     selector: 'app-pessoas-pesquisa',
@@ -16,7 +18,14 @@ export class PessoasPesquisaComponent {
     totalRegistros = 0;
     loading: boolean;
 
-    constructor(private pessoaService: PessoaService) { }
+    @ViewChild('tabela') grid: Table;
+
+    constructor(
+        private pessoaService: PessoaService,
+        private errorHandlerService: ErrorHandlerService,
+        private messageService: MessageService,
+        private confirmation: ConfirmationService
+    ) { }
 
     listar(pagina: number = 0): void {
         this.filtro.pagina = pagina;
@@ -25,7 +34,8 @@ export class PessoasPesquisaComponent {
             .then(resultado => {
                 this.pessoas = resultado.pessoas;
                 this.totalRegistros = resultado.total;
-            });
+            })
+            .catch(erro => this.errorHandlerService.handler(erro));
     }
 
     pesquisar(pagina: number = 0): void {
@@ -39,7 +49,8 @@ export class PessoasPesquisaComponent {
             .then(resultado => {
                 this.pessoas = resultado.pessoas;
                 this.totalRegistros = resultado.total;
-            });
+            })
+            .catch(erro => this.errorHandlerService.handler(erro));
     }
 
     aoMudarPagina(event: LazyLoadEvent): void {
@@ -56,6 +67,29 @@ export class PessoasPesquisaComponent {
 
             this.loading = false;
         }, 1000);
+    }
+
+    confirmarExclusao(codigo: number): void {
+        this.confirmation.confirm({
+            message: 'Tem certeza que deseja excluir?',
+            accept: () => {
+                this.excluir(codigo);
+            }
+        });
+    }
+
+    private excluir(codigo: number): void {
+        this.pessoaService.excluir(codigo)
+            .then(() => {
+                if (this.grid.first === 0) {
+                    this.pesquisar();
+                } else {
+                    this.grid.reset();
+                }
+
+                this.messageService.add({ severity: 'success', detail: 'Pessoa excluída com sucesso!' });
+            })
+            .catch(erro => this.errorHandlerService.handler(erro));
     }
 
 }

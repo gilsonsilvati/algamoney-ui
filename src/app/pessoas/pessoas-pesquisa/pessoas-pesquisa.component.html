@@ -20,7 +20,8 @@
     <div class="p-grid">
         <div class="p-col-12">
             <p-table [value]="pessoas" styleClass="p-datatable-sm p-datatable-striped" [responsive]="true" [loading]="loading"
-                    [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
+                    [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
+                    #tabela>
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Nome</th>
@@ -39,11 +40,11 @@
                         </td>
                         <td>
                             <span class="p-column-title">Cidade</span>
-                            {{ pessoa.cidade }}
+                            {{ pessoa.endereco.cidade }}
                         </td>
                         <td>
                             <span class="p-column-title">Estado</span>
-                            {{ pessoa.estado }}
+                            {{ pessoa.endereco.estado }}
                         </td>
                         <td>
                             <span class="p-column-title">Status</span>
@@ -54,7 +55,7 @@
                         <td class="col-acoes">
                             <span class="p-column-title"></span>
                             <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-                            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" class="p-button-danger"></button>
+                            <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" class="p-button-danger" (click)="confirmarExclusao(pessoa.codigo)"></button>
                         </td>
                     </tr>
                 </ng-template>
