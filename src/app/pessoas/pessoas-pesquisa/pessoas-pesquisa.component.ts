@@ -35,7 +35,7 @@ export class PessoasPesquisaComponent {
                 this.pessoas = resultado.pessoas;
                 this.totalRegistros = resultado.total;
             })
-            .catch(erro => this.errorHandlerService.handler(erro));
+            .catch(erro => this.errorHandlerService.handle(erro));
     }
 
     pesquisar(pagina: number = 0): void {
@@ -50,7 +50,7 @@ export class PessoasPesquisaComponent {
                 this.pessoas = resultado.pessoas;
                 this.totalRegistros = resultado.total;
             })
-            .catch(erro => this.errorHandlerService.handler(erro));
+            .catch(erro => this.errorHandlerService.handle(erro));
     }
 
     aoMudarPagina(event: LazyLoadEvent): void {
@@ -89,7 +89,7 @@ export class PessoasPesquisaComponent {
 
                 this.messageService.add({ severity: 'success', detail: 'Pessoa excluída com sucesso!' });
             })
-            .catch(erro => this.errorHandlerService.handler(erro));
+            .catch(erro => this.errorHandlerService.handle(erro));
     }
 
 }
