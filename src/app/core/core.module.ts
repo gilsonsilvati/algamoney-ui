@@ -8,9 +8,10 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { NavbarComponent } from './navbar/navbar.component';
-import { ErrorHandlerService } from './error-handler.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
+import { CategoriaService } from './../categorias/categoria.service';
+import { ErrorHandlerService } from './error-handler.service';
 
 registerLocaleData(localePt);
 
@@ -34,6 +35,7 @@ registerLocaleData(localePt);
 
         LancamentoService,
         PessoaService,
+        CategoriaService,
         ErrorHandlerService,
 
         { provide: LOCALE_ID, useValue: 'pt-BR' }
