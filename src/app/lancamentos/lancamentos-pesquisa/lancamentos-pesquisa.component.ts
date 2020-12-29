@@ -22,7 +22,7 @@ export class LancamentosPesquisaComponent {
 
     constructor(
         private lancamentoService: LancamentoService,
-        private errorHandlerService: ErrorHandlerService,
+        private errorHandler: ErrorHandlerService,
         private messageService: MessageService,
         private confirmation: ConfirmationService
     ) { }
@@ -35,7 +35,7 @@ export class LancamentosPesquisaComponent {
                 this.lancamentos = resultado.lancamentos;
                 this.totalRegistros = resultado.total;
             })
-            .catch(erro => this.errorHandlerService.handle(erro));
+            .catch(erro => this.errorHandler.handle(erro));
     }
 
     aoMudarPagina(event: LazyLoadEvent): void {
@@ -68,7 +68,7 @@ export class LancamentosPesquisaComponent {
 
                 this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' });
             })
-            .catch(erro => this.errorHandlerService.handle(erro));
+            .catch(erro => this.errorHandler.handle(erro));
     }
 
 }

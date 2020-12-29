@@ -22,7 +22,7 @@ export class PessoasPesquisaComponent {
 
     constructor(
         private pessoaService: PessoaService,
-        private errorHandlerService: ErrorHandlerService,
+        private errorHandler: ErrorHandlerService,
         private messageService: MessageService,
         private confirmation: ConfirmationService
     ) { }
@@ -35,7 +35,7 @@ export class PessoasPesquisaComponent {
                 this.pessoas = resultado.pessoas;
                 this.totalRegistros = resultado.total;
             })
-            .catch(erro => this.errorHandlerService.handle(erro));
+            .catch(erro => this.errorHandler.handle(erro));
     }
 
     pesquisar(pagina: number = 0): void {
@@ -50,7 +50,7 @@ export class PessoasPesquisaComponent {
                 this.pessoas = resultado.pessoas;
                 this.totalRegistros = resultado.total;
             })
-            .catch(erro => this.errorHandlerService.handle(erro));
+            .catch(erro => this.errorHandler.handle(erro));
     }
 
     aoMudarPagina(event: LazyLoadEvent): void {
@@ -79,7 +79,7 @@ export class PessoasPesquisaComponent {
                 pessoa.ativo = novoStatus;
                 this.messageService.add({ severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
             })
-            .catch(erro => this.errorHandlerService.handle(erro));
+            .catch(erro => this.errorHandler.handle(erro));
     }
 
     confirmarExclusao(codigo: number): void {
@@ -102,7 +102,7 @@ export class PessoasPesquisaComponent {
 
                 this.messageService.add({ severity: 'success', detail: 'Pessoa excluída com sucesso!' });
             })
-            .catch(erro => this.errorHandlerService.handle(erro));
+            .catch(erro => this.errorHandler.handle(erro));
     }
 
 }
